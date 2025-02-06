@@ -3,12 +3,20 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const blogRoutes = require("./routes/blogRoutes");
 const errorMiddleware = require("./middlewares/errorMiddleware");
+const cors = require("cors");
 
 dotenv.config();
 
 connectDB();
 
 const app = express();
+
+var corsOptions = {
+  origin: "*",
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
